@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QT_Driver_LoaderClass</class>
+ <widget class="QMainWindow" name="QT_Driver_LoaderClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>250</width>
+    <height>351</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QT_Driver_Loader</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="Register_Driver_Button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>110</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Register Driver</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Start_Driver_Button">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>50</y>
+      <width>109</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start Driver</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="UnRegister_Driver_Button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>110</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>UnRegister Driver</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Stop_Driver_Button">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>90</y>
+      <width>110</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Stop Driver</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Driver_Path_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>15</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Open_File_Button">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>13</y>
+      <width>50</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>File</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="QT_Driver_Loader.qrc"/>
+ </resources>
+ <connections/>
+</ui>
