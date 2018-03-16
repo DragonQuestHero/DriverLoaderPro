@@ -59,5 +59,8 @@
     <ClInclude Include="Driver_Load.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_Qt_Driver_Loader.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

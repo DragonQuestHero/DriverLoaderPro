@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -31,6 +32,7 @@ public:
     QPushButton *Stop_Driver_Button;
     QLineEdit *Driver_Path_lineEdit;
     QPushButton *Open_File_Button;
+    QLabel *Error_Lable;
 
     void setupUi(QMainWindow *QT_Driver_LoaderClass)
     {
@@ -57,6 +59,14 @@ public:
         Open_File_Button = new QPushButton(centralWidget);
         Open_File_Button->setObjectName(QStringLiteral("Open_File_Button"));
         Open_File_Button->setGeometry(QRect(190, 13, 50, 23));
+        Error_Lable = new QLabel(centralWidget);
+        Error_Lable->setObjectName(QStringLiteral("Error_Lable"));
+        Error_Lable->setGeometry(QRect(10, 130, 221, 21));
+        QFont font;
+        font.setFamily(QStringLiteral("Arial"));
+        font.setPointSize(12);
+        Error_Lable->setFont(font);
+        Error_Lable->setScaledContents(false);
         QT_Driver_LoaderClass->setCentralWidget(centralWidget);
 
         retranslateUi(QT_Driver_LoaderClass);
@@ -72,6 +82,7 @@ public:
         UnRegister_Driver_Button->setText(QApplication::translate("QT_Driver_LoaderClass", "UnRegister Driver", Q_NULLPTR));
         Stop_Driver_Button->setText(QApplication::translate("QT_Driver_LoaderClass", "Stop Driver", Q_NULLPTR));
         Open_File_Button->setText(QApplication::translate("QT_Driver_LoaderClass", "File", Q_NULLPTR));
+        Error_Lable->setText(QString());
     } // retranslateUi
 
 };

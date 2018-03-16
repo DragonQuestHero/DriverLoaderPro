@@ -18,10 +18,13 @@ public:
 	bool Start_Driver();
 	bool UnRegister_Driver();
 	bool Stop_Driver();
+public:
+	unsigned long _Last_Error = 0;
 private:
 	std::string _Driver_Name;
 	std::string _Driver_Path;
 	SC_HANDLE _Drive_Handle = 0;
 	SC_HANDLE _Server_Handle = 0;
+	int Sys_File = 0;
 };
 

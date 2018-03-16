@@ -10,10 +10,16 @@ bool Driver_Load::Init(std::string Driver_Path)
 	_splitpath(Driver_Path.data(), drive, dir, fname, ext);
 	_Driver_Name = fname;
 	_Driver_Path = Driver_Path;
-	if (std::string(ext)=="sys")
+	if (std::string(ext)==".sys")
 	{
 		return true;
 	}
+	if (Sys_File > 0)
+	{
+		return true;
+	}
+	QMessageBox::information(nullptr, "Error", "u fucking kidding me?just choose .sys file!");
+	Sys_File++;
 	return false;
 }
 
@@ -24,7 +30,7 @@ bool Driver_Load::Get_Driver_Handle()
 		_Server_Handle = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
 		if (!_Server_Handle)
 		{
-			QMessageBox::information(NULL, "Error", "OpenSCManager");
+			_Last_Error = GetLastError();
 			return false;
 		}
 
@@ -35,7 +41,7 @@ bool Driver_Load::Get_Driver_Handle()
 			_Driver_Name.data(), SERVICE_ALL_ACCESS);
 		if (!_Drive_Handle)
 		{
-			QMessageBox::information(NULL, "Error", "OpenServiceA");
+			_Last_Error = GetLastError();
 			return false;
 		}
 	}
@@ -46,7 +52,7 @@ bool Driver_Load::Register_Driver()
 	_Server_Handle = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
 	if (!_Server_Handle)
 	{
-		QMessageBox::information(NULL, "Error", "OpenSCManager");
+		_Last_Error = GetLastError();
 		return false;
 	}
 	_Drive_Handle = CreateServiceA(_Server_Handle,
@@ -55,7 +61,7 @@ bool Driver_Load::Register_Driver()
 		_Driver_Path.data(), NULL, NULL, NULL, NULL, NULL);
 	if (!_Drive_Handle)
 	{
-		QMessageBox::information(NULL, "Error", "CreateServiceA");
+		_Last_Error = GetLastError();
 		return false;
 	}
 	return true;
@@ -66,7 +72,7 @@ bool Driver_Load::Start_Driver()
 	Get_Driver_Handle();
 	if (!StartServiceA(_Drive_Handle, NULL, NULL))
 	{
-		QMessageBox::information(NULL, "Error", "StartServiceA");
+		_Last_Error = GetLastError();
 		return false;
 	}
 	return true;
@@ -79,7 +85,7 @@ bool Driver_Load::Stop_Driver()
 	if (!ControlService(_Drive_Handle,
 		SERVICE_CONTROL_STOP, &status))
 	{
-		QMessageBox::information(NULL, "Error", "ControlService");
+		_Last_Error = GetLastError();
 		return false;
 	}
 	return true;
@@ -90,7 +96,7 @@ bool Driver_Load::UnRegister_Driver()
 	Get_Driver_Handle();
 	if (!DeleteService(_Drive_Handle))
 	{
-		QMessageBox::information(NULL, "Error", "DeleteService");
+		_Last_Error = GetLastError();
 		return false;
 	}
 	return true;
