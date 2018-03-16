@@ -12,7 +12,7 @@ DriverLoaderPro is windows kernel driver load application
 
 ## Screenshot
 
-can not find image.jpg
+can not found image.jpg
 
 ## Dependencies
 
