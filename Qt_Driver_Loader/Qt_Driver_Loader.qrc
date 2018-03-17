@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="Qt_Driver_Loader">
-    </qresource>
+  <qresource prefix="Qt_Driver_Loader">
+    <file>mywife.ico</file>
+  </qresource>
 </RCC>

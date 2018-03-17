@@ -4,6 +4,9 @@ QT_Driver_Loader::QT_Driver_Loader(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.OutPut_TextEdit->setFocusPolicy(Qt::NoFocus);
+	this->setFixedSize(this->width(), this->height());
+
 	Input_QButtonGroup = new QButtonGroup();
 	Output_QButtonGroup = new QButtonGroup();
 	Input_QButtonGroup->addButton(ui.Input_Ascii_Button);

@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>QT_Driver_Loader</string>
+   <string>Driver Loader Pro</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="QT_Driver_Loader.qrc">
+    <normaloff>:/Qt_Driver_Loader/mywife.ico</normaloff>:/Qt_Driver_Loader/mywife.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="Register_Driver_Button">
@@ -116,7 +120,7 @@
      <rect>
       <x>100</x>
       <y>146</y>
-      <width>141</width>
+      <width>90</width>
       <height>20</height>
      </rect>
     </property>
@@ -230,7 +234,7 @@
      <rect>
       <x>50</x>
       <y>172</y>
-      <width>131</width>
+      <width>191</width>
       <height>20</height>
      </rect>
     </property>
@@ -346,8 +350,8 @@
    <widget class="QCheckBox" name="Hex_checkBox">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>175</y>
+      <x>200</x>
+      <y>149</y>
       <width>51</width>
       <height>16</height>
      </rect>

@@ -62,6 +62,9 @@ public:
         if (QT_Driver_LoaderClass->objectName().isEmpty())
             QT_Driver_LoaderClass->setObjectName(QStringLiteral("QT_Driver_LoaderClass"));
         QT_Driver_LoaderClass->resize(483, 377);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/Qt_Driver_Loader/mywife.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        QT_Driver_LoaderClass->setWindowIcon(icon);
         centralWidget = new QWidget(QT_Driver_LoaderClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         Register_Driver_Button = new QPushButton(centralWidget);
@@ -92,7 +95,7 @@ public:
         Error_Lable->setScaledContents(false);
         Control_LineEdit = new QLineEdit(centralWidget);
         Control_LineEdit->setObjectName(QStringLiteral("Control_LineEdit"));
-        Control_LineEdit->setGeometry(QRect(100, 146, 141, 20));
+        Control_LineEdit->setGeometry(QRect(100, 146, 90, 20));
         Control = new QLabel(centralWidget);
         Control->setObjectName(QStringLiteral("Control"));
         Control->setGeometry(QRect(10, 148, 81, 16));
@@ -120,7 +123,7 @@ public:
         Output_Unicode_Button->setGeometry(QRect(330, 312, 71, 16));
         Input_lineEdit = new QLineEdit(centralWidget);
         Input_lineEdit->setObjectName(QStringLiteral("Input_lineEdit"));
-        Input_lineEdit->setGeometry(QRect(50, 172, 131, 20));
+        Input_lineEdit->setGeometry(QRect(50, 172, 191, 20));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(10, 176, 54, 12));
@@ -150,7 +153,7 @@ public:
         Device_Name_LineEdit->setGeometry(QRect(80, 277, 161, 20));
         Hex_checkBox = new QCheckBox(centralWidget);
         Hex_checkBox->setObjectName(QStringLiteral("Hex_checkBox"));
-        Hex_checkBox->setGeometry(QRect(190, 175, 51, 16));
+        Hex_checkBox->setGeometry(QRect(200, 149, 51, 16));
         QT_Driver_LoaderClass->setCentralWidget(centralWidget);
 
         retranslateUi(QT_Driver_LoaderClass);
@@ -160,7 +163,7 @@ public:
 
     void retranslateUi(QMainWindow *QT_Driver_LoaderClass)
     {
-        QT_Driver_LoaderClass->setWindowTitle(QApplication::translate("QT_Driver_LoaderClass", "QT_Driver_Loader", Q_NULLPTR));
+        QT_Driver_LoaderClass->setWindowTitle(QApplication::translate("QT_Driver_LoaderClass", "Driver Loader Pro", Q_NULLPTR));
         Register_Driver_Button->setText(QApplication::translate("QT_Driver_LoaderClass", "Register Driver", Q_NULLPTR));
         Start_Driver_Button->setText(QApplication::translate("QT_Driver_LoaderClass", "Start Driver", Q_NULLPTR));
         UnRegister_Driver_Button->setText(QApplication::translate("QT_Driver_LoaderClass", "UnRegister Driver", Q_NULLPTR));
