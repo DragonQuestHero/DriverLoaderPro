@@ -102,6 +102,7 @@ public:
         Input_Ascii_Button = new QRadioButton(centralWidget);
         Input_Ascii_Button->setObjectName(QStringLiteral("Input_Ascii_Button"));
         Input_Ascii_Button->setGeometry(QRect(10, 201, 51, 16));
+        Input_Ascii_Button->setChecked(true);
         Input_Unicode_Button = new QRadioButton(centralWidget);
         Input_Unicode_Button->setObjectName(QStringLiteral("Input_Unicode_Button"));
         Input_Unicode_Button->setGeometry(QRect(86, 201, 71, 16));

@@ -150,6 +150,9 @@
     <property name="text">
      <string>Ascii</string>
     </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QRadioButton" name="Input_Unicode_Button">
     <property name="geometry">
