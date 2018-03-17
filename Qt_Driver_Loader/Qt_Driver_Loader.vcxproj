@@ -23,6 +23,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ItemDefinitionGroup>
@@ -33,6 +34,7 @@
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</TreatWChar_tAsBuiltInType>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <Link>
       <SubSystem Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Windows</SubSystem>
@@ -129,6 +131,7 @@
     <QtRcc Include="Qt_Driver_Loader.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CGLIB_Common.hpp" />
     <ClInclude Include="Driver_Load.h" />
     <ClInclude Include="GeneratedFiles\ui_Qt_Driver_Loader.h" />
   </ItemGroup>

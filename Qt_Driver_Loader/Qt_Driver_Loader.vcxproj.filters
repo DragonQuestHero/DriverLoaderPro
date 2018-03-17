@@ -62,5 +62,8 @@
     <ClInclude Include="GeneratedFiles\ui_Qt_Driver_Loader.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="CGLIB_Common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

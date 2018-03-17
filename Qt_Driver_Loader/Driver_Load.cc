@@ -82,10 +82,16 @@ bool Driver_Load::Stop_Driver()
 {
 	Get_Driver_Handle();
 	SERVICE_STATUS status;
+	status.dwWin32ExitCode = ERROR_SERVICE_SPECIFIC_ERROR;
 	if (!ControlService(_Drive_Handle,
 		SERVICE_CONTROL_STOP, &status))
 	{
 		_Last_Error = GetLastError();
+		return false;
+	}
+	if (status.dwCurrentState == SERVICE_STOP_PENDING || status.dwCurrentState == SERVICE_STOPPED)
+	{
+		_Last_Error = status.dwServiceSpecificExitCode;
 		return false;
 	}
 	return true;

@@ -7,12 +7,21 @@
 
 #include "Driver_Load.h"
 
+#include "CGLIB_Common.hpp"
+
+using namespace std;
+
 class QT_Driver_Loader : public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	QT_Driver_Loader(QWidget *parent = Q_NULLPTR);
+public:
+	
+private:
+	QButtonGroup *Input_QButtonGroup = nullptr;
+	QButtonGroup *Output_QButtonGroup = nullptr;
 private:
 	void Error_Out();
 private:
@@ -24,6 +33,7 @@ public slots:
 	void SLOT_Start_Driver();
 	void SLOT_Stop_Driver();
 	void SLOT_UnRegister_Driver();
+	void SLOT_Send();
 signals:
 
 };

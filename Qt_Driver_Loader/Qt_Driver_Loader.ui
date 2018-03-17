@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
-    <height>442</height>
+    <width>483</width>
+    <height>377</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>66</y>
       <width>110</width>
       <height>31</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>50</y>
+      <y>66</y>
       <width>109</width>
       <height>31</height>
      </rect>
@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>106</y>
       <width>110</width>
       <height>31</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>90</y>
+      <y>106</y>
       <width>110</width>
       <height>31</height>
      </rect>
@@ -93,8 +93,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>410</y>
-      <width>221</width>
+      <y>342</y>
+      <width>461</width>
       <height>21</height>
      </rect>
     </property>
@@ -111,21 +111,135 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="Control_LineEdit">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>130</y>
-      <width>191</width>
+      <x>100</x>
+      <y>146</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="Control">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>134</y>
+      <y>148</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Control Code</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Input_Ascii_Button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>201</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ascii</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Input_Unicode_Button">
+    <property name="geometry">
+     <rect>
+      <x>86</x>
+      <y>201</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Unicode</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Input_Hex_Button">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>201</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hex</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="OutPut_TextEdit">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>10</y>
+      <width>221</width>
+      <height>291</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Output_Ascii_Button">
+    <property name="geometry">
+     <rect>
+      <x>254</x>
+      <y>312</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ascii</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Output_Hex_Button">
+    <property name="geometry">
+     <rect>
+      <x>416</x>
+      <y>312</y>
+      <width>50</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hex</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="Output_Unicode_Button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>312</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Unicode</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Input_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>172</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>176</y>
       <width>54</width>
       <height>12</height>
      </rect>
@@ -134,92 +248,112 @@
      <string>Input</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="Ascii_Button">
+   <widget class="QPushButton" name="Send_Button">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>307</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Send Driver Control</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
-      <width>51</width>
+      <y>226</y>
+      <width>111</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Ascii</string>
+     <string>Input Buffer Size</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="Unicode_Button">
+   <widget class="QLineEdit" name="Input_Size_LineEdit">
     <property name="geometry">
      <rect>
-      <x>86</x>
-      <y>160</y>
-      <width>71</width>
-      <height>16</height>
+      <x>130</x>
+      <y>225</y>
+      <width>111</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Unicode</string>
-    </property>
    </widget>
-   <widget class="QRadioButton" name="Hex_Button">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>160</y>
-      <width>51</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Hex</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
+   <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
-      <width>221</width>
-      <height>201</height>
+      <y>251</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Output Buffer Size</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Output_Size_LineEdit">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>250</y>
+      <width>111</width>
+      <height>20</height>
      </rect>
     </property>
    </widget>
-   <widget class="QRadioButton" name="Ascii_Button_2">
+   <widget class="QCheckBox" name="MiniFilter_checkBox">
     <property name="geometry">
      <rect>
       <x>14</x>
-      <y>390</y>
-      <width>51</width>
+      <y>43</y>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Ascii</string>
+     <string>Minifilter</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="Hex_Button_2">
+   <widget class="QLabel" name="Control_2">
     <property name="geometry">
      <rect>
-      <x>184</x>
-      <y>390</y>
+      <x>10</x>
+      <y>279</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Device Name</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Device_Name_LineEdit">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>277</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="Hex_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>175</y>
       <width>51</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Hex</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="Unicode_Button_2">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>390</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Unicode</string>
     </property>
    </widget>
   </widget>
