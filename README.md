@@ -1,5 +1,9 @@
 # DriverLoaderPro
 
+##Language
+
+[简体中文](README-zh.md)
+
 DriverLoaderPro is windows kernel driver load application
 
 - open source(bullshit)
@@ -21,6 +25,7 @@ DriverLoaderPro is windows kernel driver load application
 ## Dependencies
 
 QT>=5.71
+
 MSC_VER>=1800
 
 ## How to Build
@@ -29,4 +34,4 @@ did u see?yeah.this is it.just pressing u keywork F7
 
 # the project not completed!
 
-我有静态编译版本!需要的留邮箱就发车
+if u can understand Chinese just click [me](https://pan.baidu.com/s/1yWDesa8rvS37svrJNXi3YQ "me")
