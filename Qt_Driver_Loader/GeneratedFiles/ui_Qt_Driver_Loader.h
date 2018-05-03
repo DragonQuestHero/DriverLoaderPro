@@ -61,7 +61,7 @@ public:
     {
         if (QT_Driver_LoaderClass->objectName().isEmpty())
             QT_Driver_LoaderClass->setObjectName(QStringLiteral("QT_Driver_LoaderClass"));
-        QT_Driver_LoaderClass->resize(483, 377);
+        QT_Driver_LoaderClass->resize(483, 394);
         QIcon icon;
         icon.addFile(QStringLiteral(":/Qt_Driver_Loader/mywife.ico"), QSize(), QIcon::Normal, QIcon::Off);
         QT_Driver_LoaderClass->setWindowIcon(icon);
@@ -87,7 +87,7 @@ public:
         Open_File_Button->setGeometry(QRect(190, 13, 50, 23));
         Error_Lable = new QLabel(centralWidget);
         Error_Lable->setObjectName(QStringLiteral("Error_Lable"));
-        Error_Lable->setGeometry(QRect(10, 342, 461, 21));
+        Error_Lable->setGeometry(QRect(10, 343, 461, 41));
         QFont font;
         font.setFamily(QStringLiteral("Arial"));
         font.setPointSize(11);

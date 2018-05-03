@@ -1,4 +1,4 @@
-#include "QT_Driver_Loader.h"
+﻿#include "QT_Driver_Loader.h"
 
 QT_Driver_Loader::QT_Driver_Loader(QWidget *parent)
 	: QMainWindow(parent)
@@ -59,7 +59,7 @@ void QT_Driver_Loader::Error_Out()
 		0,
 		NULL))
 	{
-		ui.Error_Lable->setText(temp);
+		ui.Error_Lable->setText(QString::fromLocal8Bit(temp));
 		LocalFree(temp);
 	}
 }
@@ -70,7 +70,10 @@ void QT_Driver_Loader::SLOT_Register_Driver()
 	{
 		Error_Out();
 	}
-	ui.Error_Lable->setText("Register SUCCESS");
+	else
+	{
+		ui.Error_Lable->setText("Register SUCCESS");
+	}
 }
 
 void QT_Driver_Loader::SLOT_Start_Driver()
@@ -79,7 +82,10 @@ void QT_Driver_Loader::SLOT_Start_Driver()
 	{
 		Error_Out();
 	}
-	ui.Error_Lable->setText("Start SUCCESS");
+	else
+	{
+		ui.Error_Lable->setText("Start SUCCESS");
+	}
 }
 
 void QT_Driver_Loader::SLOT_Stop_Driver()
@@ -88,7 +94,10 @@ void QT_Driver_Loader::SLOT_Stop_Driver()
 	{
 		Error_Out();
 	}
-	ui.Error_Lable->setText("Stop SUCCESS");
+	else 
+	{
+		ui.Error_Lable->setText("Stop SUCCESS");
+	}
 }
 
 void QT_Driver_Loader::SLOT_UnRegister_Driver()
@@ -97,7 +106,10 @@ void QT_Driver_Loader::SLOT_UnRegister_Driver()
 	{
 		Error_Out();
 	}
-	ui.Error_Lable->setText("UnRegister SUCCESS");
+	else
+	{
+		ui.Error_Lable->setText("UnRegister SUCCESS");
+	}
 }
 
 void QT_Driver_Loader::SLOT_Send()
@@ -107,6 +119,7 @@ void QT_Driver_Loader::SLOT_Send()
 	if (!handle)
 	{
 		Error_Out();
+		return;
 	}
 
 	unsigned long Control_Code;

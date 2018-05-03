@@ -1,5 +1,6 @@
 #include "QT_Driver_Loader.h"
 #include <QtWidgets/QApplication>
+#include <QTextCodec>
 
 #ifdef NDEBUG
 #include <QtPlugin>
