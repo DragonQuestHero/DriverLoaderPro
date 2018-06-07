@@ -6,9 +6,9 @@
 
 DriverLoaderPro is windows kernel driver load application
 
-- open source(bullshit)
+
 - support minifilter(auto write registry.u dont need do anything anymore)
-- support winXP - win10 compatible x86 and x64(ok...maybe support XP.i dont know.who cares?)
+- support winXP - win10 compatible x86 and x64
 - supprot input control code
 - supprot simple inputbuffer.u can choose ascii or unicode ...ok,maybe more,im trying
 - supprot outbuffer view(ascii unicode hex)
@@ -33,5 +33,3 @@ MSC_VER>=1800
 did u see?yeah.this is it.just pressing u keywork F7
 
 # the project not completed!
-
-if u can understand Chinese just click [me](https://pan.baidu.com/s/1yWDesa8rvS37svrJNXi3YQ "me")

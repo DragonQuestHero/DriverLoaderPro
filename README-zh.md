@@ -2,7 +2,7 @@
 
 DriverLoaderPro 是一个windows内核驱动加载工具
 
-- 开源(bullshit)
+
 - 支持微过滤驱动加载 自动写注册表项
 - 支持winXP-win10 兼容x86和x64
 - 支持输入控制码
@@ -26,8 +26,7 @@ MSC_VER>=1800
 
 ## How to Build
 
-直接按F7兄dei
+直接按F7
 
 # the project not completed!
 
-[我不是静态编译版本的下载地址.别点我,我也不知道这个是什么.](https://pan.baidu.com/s/1yWDesa8rvS37svrJNXi3YQ)
