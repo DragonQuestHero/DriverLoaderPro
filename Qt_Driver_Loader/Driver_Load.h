@@ -16,8 +16,15 @@ public:
 	bool Init(std::string Driver_Path);
 	bool Register_Driver();
 	bool Start_Driver();
-	bool UnRegister_Driver();
 	bool Stop_Driver();
+	bool UnRegister_Driver();
+public:
+	bool Minifilter_Register_Driver();
+public:
+	bool Nt_Register_Driver();
+	bool Nt_Start_Driver();
+	bool Nt_Stop_Driver();
+	bool Nt_UnRegister_Driver();
 public:
 	unsigned long _Last_Error = 0;
 private:

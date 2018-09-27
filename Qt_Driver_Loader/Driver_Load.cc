@@ -108,3 +108,56 @@ bool Driver_Load::UnRegister_Driver()
 	return true;
 }
 
+bool Driver_Load::Minifilter_Register_Driver()
+{
+	_Server_Handle = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
+	if (!_Server_Handle)
+	{
+		_Last_Error = GetLastError();
+		return false;
+	}
+	_Drive_Handle = CreateServiceA(_Server_Handle,
+		_Driver_Name.data(), _Driver_Name.data(),
+		SERVICE_ALL_ACCESS, SERVICE_FILE_SYSTEM_DRIVER, SERVICE_DEMAND_START, SERVICE_ERROR_IGNORE,
+		_Driver_Path.data(), NULL, NULL, NULL, NULL, NULL);
+	if (!_Drive_Handle)
+	{
+		_Last_Error = GetLastError();
+		return false;
+	}
+
+	std::string temp_str;
+	HKEY phkResult;
+	temp_str = "SYSTEM\\ControlSet001\\Services\\" + _Driver_Name;
+	if (ERROR_SUCCESS == RegOpenKeyExA(HKEY_LOCAL_MACHINE, temp_str.data(), 0, KEY_ALL_ACCESS, &phkResult))
+	{
+		RegSetValueExA(phkResult, "DependOnService", 0, REG_MULTI_SZ, (BYTE*)"FltMgr", 7);
+		temp_str = _Driver_Name + " Driver";
+		RegSetValueExA(phkResult, "Description", 0, REG_SZ, (BYTE*)temp_str.data(), temp_str.length());
+		RegSetValueExA(phkResult, "Group", 0, REG_SZ, (BYTE*)"FSFilter Activity Monitor", 26);
+		DWORD temp_value = 3;
+		RegSetValueExA(phkResult, "SupportedFeatures", 0, REG_DWORD, (LPBYTE)&temp_value, sizeof(DWORD));
+		temp_value = 2;
+		RegSetValueExA(phkResult, "Tag", 0, REG_DWORD, (BYTE*)&temp_value, 4);
+		temp_value = 2;
+		RegSetValueExA(phkResult, "Type", 0, REG_DWORD, (BYTE*)&temp_value, 4);
+
+		RegCreateKeyA(phkResult, "Instances", &phkResult);
+		temp_str = _Driver_Name + " Instance";
+		RegSetValueExA(phkResult, "DefaultInstance", 0, REG_SZ, (BYTE*)temp_str.data(), temp_str.length());
+
+		temp_str = _Driver_Name + " Instance";
+		RegCreateKeyA(phkResult, temp_str.data(), &phkResult);
+		RegSetValueExA(phkResult, "Altitude", 0, REG_SZ, (BYTE*)"325107", 7);
+		temp_value = 4;
+		RegSetValueExA(phkResult, "Flags", 0, REG_DWORD, (BYTE*)&temp_value, 4);
+		RegCloseKey(phkResult);
+	}
+	else
+	{
+		_Last_Error = GetLastError();
+		return false;
+	}
+	return true;
+}
+

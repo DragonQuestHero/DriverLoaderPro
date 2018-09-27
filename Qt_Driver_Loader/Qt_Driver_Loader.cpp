@@ -66,13 +66,27 @@ void QT_Driver_Loader::Error_Out()
 
 void QT_Driver_Loader::SLOT_Register_Driver()
 {
-	if (_Driver_Load->Register_Driver() == false)
+	if (ui.MiniFilter_checkBox->isChecked())
 	{
-		Error_Out();
+		if (_Driver_Load->Minifilter_Register_Driver() == false)
+		{
+			Error_Out();
+		}
+		else
+		{
+			ui.Error_Lable->setText("Register SUCCESS");
+		}
 	}
 	else
 	{
-		ui.Error_Lable->setText("Register SUCCESS");
+		if (_Driver_Load->Register_Driver() == false)
+		{
+			Error_Out();
+		}
+		else
+		{
+			ui.Error_Lable->setText("Register SUCCESS");
+		}
 	}
 }
 
