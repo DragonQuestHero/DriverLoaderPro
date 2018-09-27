@@ -56,6 +56,7 @@ public:
     QLabel *Control_2;
     QLineEdit *Device_Name_LineEdit;
     QCheckBox *Hex_checkBox;
+    QCheckBox *_Nt_Load_checkBox;
 
     void setupUi(QMainWindow *QT_Driver_LoaderClass)
     {
@@ -155,6 +156,9 @@ public:
         Hex_checkBox = new QCheckBox(centralWidget);
         Hex_checkBox->setObjectName(QStringLiteral("Hex_checkBox"));
         Hex_checkBox->setGeometry(QRect(200, 149, 51, 16));
+        _Nt_Load_checkBox = new QCheckBox(centralWidget);
+        _Nt_Load_checkBox->setObjectName(QStringLiteral("_Nt_Load_checkBox"));
+        _Nt_Load_checkBox->setGeometry(QRect(100, 41, 91, 20));
         QT_Driver_LoaderClass->setCentralWidget(centralWidget);
 
         retranslateUi(QT_Driver_LoaderClass);
@@ -185,6 +189,7 @@ public:
         MiniFilter_checkBox->setText(QApplication::translate("QT_Driver_LoaderClass", "Minifilter", Q_NULLPTR));
         Control_2->setText(QApplication::translate("QT_Driver_LoaderClass", "Device Name", Q_NULLPTR));
         Hex_checkBox->setText(QApplication::translate("QT_Driver_LoaderClass", "Hex", Q_NULLPTR));
+        _Nt_Load_checkBox->setText(QApplication::translate("QT_Driver_LoaderClass", "NT Load", Q_NULLPTR));
     } // retranslateUi
 
 };

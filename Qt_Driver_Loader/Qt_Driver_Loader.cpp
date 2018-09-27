@@ -66,33 +66,44 @@ void QT_Driver_Loader::Error_Out()
 
 void QT_Driver_Loader::SLOT_Register_Driver()
 {
-	if (ui.MiniFilter_checkBox->isChecked())
+	bool result = false;
+	if (ui._Nt_Load_checkBox->isChecked())
 	{
-		if (_Driver_Load->Minifilter_Register_Driver() == false)
-		{
-			Error_Out();
-		}
-		else
-		{
-			ui.Error_Lable->setText("Register SUCCESS");
-		}
+		result = _Driver_Load->Nt_Register_Driver();
+	}
+	else if (ui.MiniFilter_checkBox->isChecked())
+	{
+		result = _Driver_Load->Minifilter_Register_Driver();
 	}
 	else
 	{
-		if (_Driver_Load->Register_Driver() == false)
-		{
-			Error_Out();
-		}
-		else
-		{
-			ui.Error_Lable->setText("Register SUCCESS");
-		}
+		result = _Driver_Load->Register_Driver();
+	}
+
+
+	if (result == false)
+	{
+		Error_Out();
+	}
+	else
+	{
+		ui.Error_Lable->setText("Register SUCCESS");
 	}
 }
 
 void QT_Driver_Loader::SLOT_Start_Driver()
 {
-	if (_Driver_Load->Start_Driver() == false)
+	bool result = false;
+	if (ui._Nt_Load_checkBox->isChecked())
+	{
+		result = _Driver_Load->Nt_Start_Driver();
+	}
+	else
+	{
+		result = _Driver_Load->Start_Driver();
+	}
+
+	if (result == false)
 	{
 		Error_Out();
 	}
@@ -104,7 +115,17 @@ void QT_Driver_Loader::SLOT_Start_Driver()
 
 void QT_Driver_Loader::SLOT_Stop_Driver()
 {
-	if (_Driver_Load->Stop_Driver())
+	bool result = false;
+	if (ui._Nt_Load_checkBox->isChecked())
+	{
+		result = _Driver_Load->Nt_Stop_Driver();
+	}
+	else
+	{
+		result = _Driver_Load->Stop_Driver();
+	}
+
+	if (result)
 	{
 		Error_Out();
 	}
@@ -116,7 +137,17 @@ void QT_Driver_Loader::SLOT_Stop_Driver()
 
 void QT_Driver_Loader::SLOT_UnRegister_Driver()
 {
-	if (_Driver_Load->UnRegister_Driver())
+	bool result = false;
+	if (ui._Nt_Load_checkBox->isChecked())
+	{
+		result = _Driver_Load->Nt_UnRegister_Driver();
+	}
+	else
+	{
+		result = _Driver_Load->UnRegister_Driver();
+	}
+
+	if (result)
 	{
 		Error_Out();
 	}

@@ -363,6 +363,19 @@
      <string>Hex</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="_Nt_Load_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>41</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NT Load</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

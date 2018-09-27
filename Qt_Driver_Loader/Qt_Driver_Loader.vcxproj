@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -20,7 +28,16 @@
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -30,37 +47,64 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;UNICODE;WIN32;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </DebugInformationFormat>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</TreatWChar_tAsBuiltInType>
+      <TreatWChar_tAsBuiltInType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</TreatWChar_tAsBuiltInType>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MaxSpeed</Optimization>
     </ClCompile>
     <Link>
       <SubSystem Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Windows</SubSystem>
+      <SubSystem Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Windows</SubSystem>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\$(ProjectName).exe</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\lib;F:\Static-Qt5.7.1-x64\plugins\platforms;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateDebugInformation>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;ws2_32.lib;qtpcre.lib;qtpng.lib;qwindows.lib;Qt5PlatformSupport.lib;qtfreetype.lib;Imm32.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</GenerateDebugInformation>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ws2_32.lib;qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;qtpcre.lib;qtpng.lib;qtharfbuzzng.lib;qwindows.lib;Qt5PlatformSupport.lib;qtfreetype.lib;Imm32.lib;Winmm.lib;ntdll.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;ws2_32.lib;qtpcre.lib;qtpng.lib;qwindows.lib;Qt5PlatformSupport.lib;qtfreetype.lib;Imm32.lib;Winmm.lib;ntdll.lib;Shlwapi.lib;qtharfbuzzng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MachineX64</TargetMachine>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> /SUBSYSTEM:WINDOWS</AdditionalOptions>
     </Link>
     <QtMoc>
       <InputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FullPath)</InputFile>
+      <InputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FullPath)</InputFile>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">output</DynamicSource>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">output</DynamicSource>
       <ExecutionDescription Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc'ing %(Identity)...</ExecutionDescription>
+      <ExecutionDescription Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc'ing %(Identity)...</ExecutionDescription>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB</Define>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;UNICODE;WIN32;WIN64</Define>
       <QTDIR Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)</QTDIR>
+      <QTDIR Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)</QTDIR>
     </QtMoc>
     <QtUic>
       <ExecutionDescription Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic'ing %(Identity)...</ExecutionDescription>
+      <ExecutionDescription Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic'ing %(Identity)...</ExecutionDescription>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h</OutputFile>
       <QTDIR Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)</QTDIR>
+      <QTDIR Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)</QTDIR>
       <InputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FullPath)</InputFile>
+      <InputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FullPath)</InputFile>
     </QtUic>
     <QtRcc>
       <ExecutionDescription Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Rcc'ing %(Identity)...</ExecutionDescription>
+      <ExecutionDescription Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Rcc'ing %(Identity)...</ExecutionDescription>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
     </QtRcc>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
@@ -69,7 +113,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -83,7 +133,13 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -101,13 +157,46 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;ntdll.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <Define>UNICODE;WIN32;WIN64;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB</Define>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\ui_%(Filename).h</OutputFile>
+    </QtUic>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <OutputFile>.\GeneratedFiles\qrc_%(Filename).cpp</OutputFile>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;UNICODE;WIN32;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions> /SUBSYSTEM:WINDOWS</AdditionalOptions>
+    </Link>
+    <QtMoc>
+      <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
+      <Define>QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;UNICODE;WIN32;WIN64</Define>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
@@ -153,7 +242,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="Static-QT5.71" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="Static-QT5.71" Qt5Version_x0020_x64="Static-QT5.71-x64" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

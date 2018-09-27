@@ -10,6 +10,7 @@ bool Driver_Load::Init(std::string Driver_Path)
 	_splitpath(Driver_Path.data(), drive, dir, fname, ext);
 	_Driver_Name = fname;
 	_Driver_Path = Driver_Path;
+	_Driver_Ext = ext;
 	if (std::string(ext)==".sys")
 	{
 		return true;
@@ -161,7 +162,134 @@ bool Driver_Load::Minifilter_Register_Driver()
 	return true;
 }
 
+bool Driver_Load::Enable_Debug()
+{
+	HANDLE hToken;
+	//把一个访问令牌中没有启用该权限但是本身是具有该权限的进程提权
+	if (OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &hToken)) //打开进程访问令牌  
+	{
+		//试图修改“调试”特权  
+		TOKEN_PRIVILEGES tp;
+		tp.PrivilegeCount = 1;
+		LookupPrivilegeValue(NULL, SE_LOAD_DRIVER_NAME, &tp.Privileges[0].Luid);
+		tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+		BOOL fOK = AdjustTokenPrivileges(hToken, FALSE, &tp, sizeof(tp), NULL, NULL);
+		_Last_Error = GetLastError();
+		if (_Last_Error != ERROR_SUCCESS || fOK != TRUE)
+		{
+			QMessageBox::information(nullptr, "Error", std::to_string(_Last_Error).data());
+			CloseHandle(hToken);
+			return false;
+		}
+		CloseHandle(hToken);
+		return true;
+	}
+	else
+	{
+		goto _ERROR;
+	}
+_ERROR:
+	_Last_Error = GetLastError();
+	return false;
+}
+
 bool Driver_Load::Nt_Register_Driver()
 {
-	
+	std::string temp_str = "SYSTEM\\CurrentControlSet\\Services\\" + _Driver_Name;
+	HKEY phkResult;
+	if (ERROR_SUCCESS == RegCreateKeyA(HKEY_LOCAL_MACHINE, temp_str.data(), &phkResult))
+	{
+		DWORD temp_value = 1;
+		RegSetValueExA(phkResult, "ErrorControl", 0, REG_DWORD, (LPBYTE)&temp_value, sizeof(DWORD));
+		RegSetValueExA(phkResult, "Type", 0, REG_DWORD, (LPBYTE)&temp_value, sizeof(DWORD));
+		temp_value = 3;
+		RegSetValueExA(phkResult, "Start", 0, REG_DWORD, (LPBYTE)&temp_value, sizeof(DWORD));
+		temp_str = _Driver_Name + _Driver_Ext;
+		RegSetValueExA(phkResult, "ImagePath", 0, REG_EXPAND_SZ, (const unsigned char*)temp_str.data(), temp_str.length());
+		RegCloseKey(phkResult);
+
+		return true;
+	}
+	else
+	{
+		_Last_Error = GetLastError();
+		return false;
+	}
+}
+
+bool Driver_Load::Nt_Start_Driver()
+{
+	if (Enable_Debug())
+	{
+		HMODULE hNtdll = GetModuleHandleA("Ntdll.dll");
+		_NtLoadDriver NtLoadDriver = (_NtLoadDriver)GetProcAddress(hNtdll, "NtLoadDriver");
+		if (NtLoadDriver == nullptr)
+		{
+			_Last_Error = GetLastError();
+			return false;
+		}
+
+		std::string temp_str = "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\" + _Driver_Name;
+		UNICODE_STRING uDriver;
+		ANSI_STRING asDriverKey;
+		RtlInitAnsiString(&asDriverKey, temp_str.data());
+		RtlAnsiStringToUnicodeString(&uDriver, &asDriverKey, TRUE);
+		ULONG ret = NtLoadDriver(&uDriver);
+		RtlFreeUnicodeString(&uDriver);
+		if (ret == 0)
+		{
+			return true;
+		}
+		else
+		{
+			QMessageBox::information(nullptr, "Error", std::to_string(ret).data());
+			return false;
+		}
+	}
+}
+
+bool Driver_Load::Nt_Stop_Driver()
+{
+	HMODULE hNtdll = GetModuleHandleA("Ntdll.dll");
+	_NtUnLoadDriver NtUnLoadDriver = (_NtLoadDriver)GetProcAddress(hNtdll, "NtUnLoadDriver");
+	if (NtUnLoadDriver == nullptr)
+	{
+		_Last_Error = GetLastError();
+		return false;
+	}
+
+	std::string temp_str = "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\" + _Driver_Name;
+	UNICODE_STRING uDriver;
+	ANSI_STRING asDriverKey;
+	RtlInitAnsiString(&asDriverKey, temp_str.data());
+	if (RtlAnsiStringToUnicodeString(&uDriver, &asDriverKey, TRUE))
+	{
+		ULONG ret = NtUnLoadDriver(&uDriver);
+		RtlFreeUnicodeString(&uDriver);
+		if (ret == 0)
+		{
+			return true;
+		}
+		else
+		{
+			_Last_Error = ret;
+			return false;
+		}
+	}
+	else
+	{
+		_Last_Error = GetLastError();
+		return false;
+	}
+}
+
+bool Driver_Load::Nt_UnRegister_Driver()
+{
+	std::string temp_str = "SYSTEM\\CurrentControlSet\\Services\\" + _Driver_Name;
+	if (ERROR_SUCCESS == SHDeleteKeyA(HKEY_LOCAL_MACHINE, temp_str.data()))
+	{
+		return true;
+	}
+	_Last_Error = GetLastError();
+	return false;
 }
