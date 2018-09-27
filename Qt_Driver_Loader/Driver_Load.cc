@@ -161,3 +161,7 @@ bool Driver_Load::Minifilter_Register_Driver()
 	return true;
 }
 
+bool Driver_Load::Nt_Register_Driver()
+{
+	
+}
