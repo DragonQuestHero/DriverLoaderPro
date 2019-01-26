@@ -23,11 +23,12 @@ public:
 public:
 	bool Minifilter_Register_Driver();
 public:
-	bool Enable_Debug();
 	bool Nt_Register_Driver();
 	bool Nt_Start_Driver();
 	bool Nt_Stop_Driver();
 	bool Nt_UnRegister_Driver();
+private:
+	bool Enable_Debug();
 public:
 	unsigned long _Last_Error = 0;
 private:

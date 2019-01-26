@@ -125,7 +125,7 @@ void QT_Driver_Loader::SLOT_Stop_Driver()
 		result = _Driver_Load->Stop_Driver();
 	}
 
-	if (result)
+	if (result == false)
 	{
 		Error_Out();
 	}
@@ -147,7 +147,7 @@ void QT_Driver_Loader::SLOT_UnRegister_Driver()
 		result = _Driver_Load->UnRegister_Driver();
 	}
 
-	if (result)
+	if (result == false)
 	{
 		Error_Out();
 	}

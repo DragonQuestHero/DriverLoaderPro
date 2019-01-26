@@ -250,20 +250,21 @@ bool Driver_Load::Nt_Start_Driver()
 
 bool Driver_Load::Nt_Stop_Driver()
 {
-	HMODULE hNtdll = GetModuleHandleA("Ntdll.dll");
-	_NtUnLoadDriver NtUnLoadDriver = (_NtLoadDriver)GetProcAddress(hNtdll, "NtUnLoadDriver");
-	if (NtUnLoadDriver == nullptr)
+	if (Enable_Debug())
 	{
-		_Last_Error = GetLastError();
-		return false;
-	}
+		HMODULE hNtdll = GetModuleHandleA("Ntdll.dll");
+		_NtUnLoadDriver NtUnLoadDriver = (_NtLoadDriver)GetProcAddress(hNtdll, "NtUnloadDriver");
+		if (NtUnLoadDriver == nullptr)
+		{
+			_Last_Error = GetLastError();
+			return false;
+		}
 
-	std::string temp_str = "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\" + _Driver_Name;
-	UNICODE_STRING uDriver;
-	ANSI_STRING asDriverKey;
-	RtlInitAnsiString(&asDriverKey, temp_str.data());
-	if (RtlAnsiStringToUnicodeString(&uDriver, &asDriverKey, TRUE))
-	{
+		std::string temp_str = "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\" + _Driver_Name;
+		UNICODE_STRING uDriver;
+		ANSI_STRING asDriverKey;
+		RtlInitAnsiString(&asDriverKey, temp_str.data());
+		RtlAnsiStringToUnicodeString(&uDriver, &asDriverKey, TRUE);
 		ULONG ret = NtUnLoadDriver(&uDriver);
 		RtlFreeUnicodeString(&uDriver);
 		if (ret == 0)
@@ -272,14 +273,9 @@ bool Driver_Load::Nt_Stop_Driver()
 		}
 		else
 		{
-			_Last_Error = ret;
+			QMessageBox::information(nullptr, "Error", std::to_string(ret).data());
 			return false;
 		}
-	}
-	else
-	{
-		_Last_Error = GetLastError();
-		return false;
 	}
 }
 
