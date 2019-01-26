@@ -223,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGLIB_Common.hpp" />
+    <ClInclude Include="CGLIB_String_Text.hpp" />
     <ClInclude Include="Driver_Load.h" />
     <ClInclude Include="GeneratedFiles\ui_Qt_Driver_Loader.h" />
     <ClInclude Include="resource.h" />

@@ -7,6 +7,8 @@
 
 #include <QMessageBox>
 
+#include "CGLIB_String_Text.hpp"
+
 class Driver_Load
 {
 public:

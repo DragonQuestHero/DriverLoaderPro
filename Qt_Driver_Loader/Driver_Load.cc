@@ -204,7 +204,10 @@ bool Driver_Load::Nt_Register_Driver()
 		RegSetValueExA(phkResult, "Type", 0, REG_DWORD, (LPBYTE)&temp_value, sizeof(DWORD));
 		temp_value = 3;
 		RegSetValueExA(phkResult, "Start", 0, REG_DWORD, (LPBYTE)&temp_value, sizeof(DWORD));
-		temp_str = _Driver_Name + _Driver_Ext;
+		//temp_str = _Driver_Name + _Driver_Ext;
+		CGLIB_String_Text temp_text;
+		temp_str = temp_text.Replace(_Driver_Path, "/", "\\");
+		temp_str = "\\??\\" + temp_str;
 		RegSetValueExA(phkResult, "ImagePath", 0, REG_EXPAND_SZ, (const unsigned char*)temp_str.data(), temp_str.length());
 		RegCloseKey(phkResult);
 

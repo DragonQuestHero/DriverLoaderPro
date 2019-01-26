@@ -71,6 +71,9 @@
     <ClInclude Include="resource1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CGLIB_String_Text.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="mywife.ico">
