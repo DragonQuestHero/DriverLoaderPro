@@ -30,6 +30,6 @@ MSC_VER>=1800
 
 ## How to Build
 
-did u see?yeah.this is it.just pressing u keywork F7
+别问 问就是F7
 
 # the project not completed!
