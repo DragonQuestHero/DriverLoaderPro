@@ -74,6 +74,10 @@ bool Driver_Load::Start_Driver()
 	if (!StartServiceA(_Drive_Handle, NULL, NULL))
 	{
 		_Last_Error = GetLastError();
+		if(_Last_Error == ERROR_SERVICE_ALREADY_RUNNING)
+		{
+			return true;
+		}
 		return false;
 	}
 	return true;
